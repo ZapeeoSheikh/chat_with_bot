@@ -4,7 +4,7 @@ A Robot that can answer your all the question wihtout judging you. For the backe
 
 ## Getting Started
 
-[![Chat with Bot](images/display.png)](https://www.youtube.com/embed/GxCHEa1r6k4)
+[![Chat with Bot](Images/display.png)](https://www.youtube.com/embed/GxCHEa1r6k4)
 
 
 
