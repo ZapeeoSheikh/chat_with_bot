@@ -1,10 +1,15 @@
 # chat_with_bot
 
-A new Flutter project.
+A Robot that can answer your all the question wihtout judging you. For the backend I have used Rapid API to get result.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+[![Chat with Bot](images/display.png)](https://www.youtube.com/embed/GxCHEa1r6k4)
+
+
+
+
+## Click the Image to check more about the project.
 
 A few resources to get you started if this is your first Flutter project:
 
