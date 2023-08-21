@@ -20,9 +20,23 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isTyping = false;
   final questionController = TextEditingController();
   final List<ChatMessage> _messages = [];
+  List<DropdownMenuItem<String>> get dropdownItems{
+    List<DropdownMenuItem<String>> menuItems = [
+      DropdownMenuItem(child: Text("English"),value: "USA"),
+      DropdownMenuItem(child: Text("Urdu"),value: "Canada"),
+      DropdownMenuItem(child: Text("Bangali"),value: "Brazil"),
+      DropdownMenuItem(child: Text("Hindi"),value: "England"),
+    ];
+    return menuItems;
+  }
+  String selectedValue = "USA";
+  bool isType = true;
 
   @override
   void _sendMessage() {
+    setState(() {
+      isType = false;
+    });
     if (questionController.text.isEmpty) return;
     ChatMessage message = ChatMessage(
       text: questionController.text,
@@ -63,7 +77,7 @@ class _ChatScreenState extends State<ChatScreen> {
               borderRadius: BorderRadius.circular(100),
             ),
             child: Icon(
-              Icons.send,
+              Icons.mic,
               color: Colors.white,
               size: 25,
             ),
@@ -101,6 +115,14 @@ class _ChatScreenState extends State<ChatScreen> {
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                   ),
+                  Spacer(),
+                  // DropdownButton(value: selectedValue,
+                  //     items: dropdownItems, onChanged: (String? value) {  },),
+                  IconButton(
+                    tooltip: "Select language",
+                    icon: Icon(Icons.language), onPressed: () {
+
+                  },)
                 ],
               ),
               Flexible(
@@ -169,21 +191,7 @@ class _ChatScreenState extends State<ChatScreen> {
         print(response.headers);
         final data = jsonDecode(response.body.toString());
         print(data);
-        // Future.delayed(Duration(seconds: 3));
 
-        // Navigator.of(context)
-        //     .push(MaterialPageRoute(builder: (context) => DetailsPage(
-        //   maleName: data['sname'],
-        //   femaleName: data['fname'],
-        //   percentage: data['percentage'],
-        //   result: data['result'],
-        // )));
-        // setState(() {
-        //   maleController.clear();
-        //   femaleController.clear();
-        //   maleAgeController.clear();
-        //   femaleAgeController.clear();
-        // });
       } else
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text("Oops something went wrong ${response.statusCode}")));

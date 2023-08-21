@@ -94,7 +94,7 @@ class ChatMessage extends StatelessWidget {
           child: Image(
             // color: MyColor.mainColor1,
                   image: NetworkImage(
-                    "https://avatars.githubusercontent.com/u/77886136?v=4"),
+                    "https://media.licdn.com/dms/image/D4D03AQFsFIyTfr6z8g/profile-displayphoto-shrink_800_800/0/1683985480430?e=2147483647&v=beta&t=nbFDXUoAtxABcekgpvAFOH-tzh7cmghMy39RLI-PrBk"),
                   width: 50,
                   height: 50,
                 fit: BoxFit.cover,

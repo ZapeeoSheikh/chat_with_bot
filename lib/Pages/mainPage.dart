@@ -11,6 +11,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +44,7 @@ class _MainPageState extends State<MainPage> {
               Image(image: AssetImage("Images/Bot.png"), width: MediaQuery.of(context).size.width,),
               SizedBox(height: 10,),
               Text(
-                "Welcome, Rameez!👋",
+                "Welcome, NCBA&E!👋",
                 style: GoogleFonts.lato(
                     color: MyColor.textColor1,
                     fontWeight: FontWeight.bold,
