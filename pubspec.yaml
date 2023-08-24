@@ -39,6 +39,9 @@ dependencies:
   velocity_x:
   http:
   convert:
+  speech_to_text: ^6.1.1
+  flutter_tts: ^3.6.3
+  animate_do: ^3.0.2
 
   flutter_localizations:
     sdk: flutter
@@ -71,6 +74,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Images/
+    - assets/images/
+    - assets/sounds/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

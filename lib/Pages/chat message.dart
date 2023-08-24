@@ -43,83 +43,100 @@ import 'package:velocity_x/velocity_x.dart';
 import '../Ui Kit/Ui.dart';
 
 class ChatMessage extends StatelessWidget {
-  const ChatMessage(
-      {super.key,
-      required this.text,
-      required this.sender,
-      });
+  const ChatMessage({
+    super.key,
+    required this.text,
+    required this.sender,
+    this.generatedImageUrl,
+  });
 
   final String text;
   final String sender;
-
+  final String? generatedImageUrl;
 
   @override
   Widget build(BuildContext context) {
-    return sender == "bot" ? Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Expanded(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.7,
-                decoration: BoxDecoration(
-                  color: MyColor.mainColor2 ,
-                  borderRadius: BorderRadius.circular(10),
+    return sender == "bot"
+        ? Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Expanded(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    decoration: BoxDecoration(
+                      color: MyColor.mainColor2,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: generatedImageUrl == null
+                        ? Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: text
+                                .trim()
+                                .text
+                                .bodyText1(context)
+                                .make()
+                                .px8())
+                        : Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                generatedImageUrl!,
+                                width: 200,
+                                height: 200,
+                              ),
+                            ),
+                          ),
+                  ),
                 ),
-                child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: text.trim().text.bodyText1(context).make().px8())),
-          ),
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(25.0),
-          child: Image(
-            // color: MyColor.mainColor1,
-            image: NetworkImage(
-                "Images/Bot.png" ),
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
-
-          ),
-        ),
-      ],
-    ).py8() : Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(25.0),
-          child: Image(
-            // color: MyColor.mainColor1,
-                  image: NetworkImage(
-                    "https://media.licdn.com/dms/image/D4D03AQFsFIyTfr6z8g/profile-displayphoto-shrink_800_800/0/1683985480430?e=2147483647&v=beta&t=nbFDXUoAtxABcekgpvAFOH-tzh7cmghMy39RLI-PrBk"),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(25.0),
+                child: Image(
+                  // color: MyColor.mainColor1,
+                  image: AssetImage("Images/Bot.png"),
                   width: 50,
                   height: 50,
-                fit: BoxFit.cover,
-
-              ),
-            ),
-        Padding(
-          padding:  EdgeInsets.all(8.0),
-          child: Expanded(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.7,
-                decoration: BoxDecoration(
-                  color: MyColor.mainColor1,
-                  borderRadius: BorderRadius.circular(10),
+                  fit: BoxFit.cover,
                 ),
-                child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: text.trim().text.bodyText1(context).make().px8())),
-          ),
-        ),
-      ],
-    ).py8()
-
-
-
-    ;
+              ),
+            ],
+          ).py8()
+        : Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(25.0),
+                child: Image(
+                  image: NetworkImage(
+                      "https://media.licdn.com/dms/image/D4D03AQFsFIyTfr6z8g/profile-displayphoto-shrink_800_800/0/1683985480430?e=2147483647&v=beta&t=nbFDXUoAtxABcekgpvAFOH-tzh7cmghMy39RLI-PrBk"),
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Expanded(
+                  child: Container(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      decoration: BoxDecoration(
+                        color: MyColor.mainColor1,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: text
+                              .trim()
+                              .text
+                              .bodyText1(context)
+                              .make()
+                              .px8())),
+                ),
+              ),
+            ],
+          ).py8();
   }
 }
